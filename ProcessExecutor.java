@@ -3,15 +3,17 @@
 public class ProcessExecutor {
 
 	public static void main(String[] args) {
-		Integer[][] pair = { { 2, 1, 8, 4, 5 }, 
-						     { 2, 1, 4, 2, 3 }, };
+		Integer[][] pair = { { 2, 1, 8, 4, 5 }, //process time
+				   { 2, 1, 4, 2, 3 }, };//priority
 		fcfs(pair);
 		System.out.println("");
 		sjf(pair);
 		System.out.println("");
 		npp(pair);
 	}
-
+	/*implementation wherein the jobs are handled in exactly the order they appear
+	  regardless of their size or priority.
+	*/
 	public static void fcfs(Integer[][] pair) {
 		int turnTime = 0;
 		System.out.println("First come first serve implementation: \n");
@@ -22,7 +24,10 @@ public class ProcessExecutor {
 			System.out.println("");
 		}
 	}
-
+ 
+	/*Implementation wherein the jobs are handled according to their size, with shorter 
+	  jobs executing first.
+	*/
 	public static void sjf(Integer[][] pair) {
 		int turnTime = 0;
 		int[] subArray = new int[pair[0].length];
@@ -56,6 +61,8 @@ public class ProcessExecutor {
 			loop--;
 		}
 	}
+	//implementation wherein the jobs are executed in accordance to their priority,
+	//with jobs not having the ability to preempt currently executing tasks. 
 	public static void npp(Integer[][] pair) {
 		System.out.println("Nonpreimptive priority implementation: \n");
 		System.out.println("Process          Turnaround Time");
